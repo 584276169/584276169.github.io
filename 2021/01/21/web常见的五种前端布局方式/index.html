@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="web大前端布局常用的布局常用的布局一般分为一下几大类：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web常见的五种前端布局方式">
+<meta property="og:url" content="http://example.com/2021/01/21/web%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BA%94%E7%A7%8D%E5%89%8D%E7%AB%AF%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="shucai">
+<meta property="og:description" content="web大前端布局常用的布局常用的布局一般分为一下几大类：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/21/web%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BA%94%E7%A7%8D%E5%89%8D%E7%AB%AF%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/web%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F.jpg">
+<meta property="article:published_time" content="2021-01-21T13:23:51.000Z">
+<meta property="article:modified_time" content="2021-01-21T13:33:01.014Z">
+<meta property="article:author" content="Mr.chen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/21/web%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BA%94%E7%A7%8D%E5%89%8D%E7%AB%AF%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/web%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F.jpg">
+
+<link rel="canonical" href="http://example.com/2021/01/21/web%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BA%94%E7%A7%8D%E5%89%8D%E7%AB%AF%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>web常见的五种前端布局方式 | shucai</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+   <!--pjax：防止跳转页面音乐暂停-->
+  <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script> 
+<link rel="alternate" href="/atom.xml" title="shucai" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">shucai</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-photos">
+
+    <a href="/photos/" rel="section"><i class="fa fa-th fa-fw"></i>photos</a>
+
+  </li>
+        <li class="menu-item menu-item-officialaccount">
+
+    <a href="/officialaccount/" rel="section"><i class="fa fa-th fa-fw"></i>officialaccount</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/21/web%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BA%94%E7%A7%8D%E5%89%8D%E7%AB%AF%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="Mr.chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shucai">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          web常见的五种前端布局方式
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-21 21:23:51 / Modified: 21:33:01" itemprop="dateCreated datePublished" datetime="2021-01-21T21:23:51+08:00">2021-01-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>web大前端布局<br>常用的布局<br>常用的布局一般分为一下几大类：</p>
+<a id="more"></a>
+<p><span style="color:#F67F30">文档布局（text）</span><br>文档流本质是 nomal flow （普通流、常规流）<br><br>元素在文档中的特点 块级元素，和内联元素。<br><br>块级元素：是自带有这行效果，在文档中独占一行的效果，块状元素会自上而下的排列且在默认宽度是父元素的100%而高度默认被内容撑开。<br><br>内联元素：内联元素在文档流中只占自身的大小，会默认从左向右排列，如果一行中不足以容纳所有的内联元素，则换到下一行，继续自左向右。在文档流中，内联元素的宽度和<br>度默认都被内容撑开。 什么是文档流（文档布局）将窗体自上而下分成一行一行，块级元素从上至下、行内元素在每行中从左至右的顺序依次排放元素。<br><br>缺点：在移动端不可以使用pc端的页面，两个页面的布局是不一致的，移动端需要自己再设计一个布局并使用不同的域名呈现<br><br><span style="color:#F67F30">浮动布局（float）</span><br>浮动一般用于让块级元素排成一行在同一行显示<br><br>任何元素都可浮动，如一个元素设置为浮动元素，浮动元素无论最初是什么都会变成一个行块级元素，拥有disolay：inline-block属性float：left沿着父容器顶部向左推入容<br>器，如果卡住推不动，判断当前位置能否全部显示该子容器，如果能完成 如果不能继续找空档往里推<br><br>缺点：脱离文档流，需要清除浮动，高度塌陷（float的破坏性主要是指它会使父容器的高度塌陷，也就是父元素在高度计算的时候会忽略浮动的元素）。<br><br>优点：兼容性好，计较简单容易上手<br><br>清除浮动<br><br>清除浮动是为了父级元素所在容器中的block-level box布局不产生影响所以在浮动布局情况下，让父级得适合的高度<br><br>最后在同一结构下, 如果采用浮动布局,所有的同级别兄弟标签都要采用浮动布局浮动布局的盒子宽度在没有设定时会自适应内容宽度<br></p>
+<p><img src="/2021/01/21/web%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BA%94%E7%A7%8D%E5%89%8D%E7%AB%AF%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F/web%E5%B8%83%E5%B1%80%E6%96%B9%E5%BC%8F.jpg" alt="web布局方式"></p>
+<p><span style="color:#F67F30">定位布局（position）</span><br>relative属性：脱离文档流，但保留占位符，其偏移位置是相对于本身在正常文档流中时的位置， 脱离文档流是说设置了relative属性之后，元素不在z-index：0；的正常文档<br>流中，其z-index的值&gt;0但保留占位符，就是在正常文档流中位置依旧保留着，后续元素不能占位，然后相对于本身正常位置进行偏移。<br><br>absolute：完全脱离文档流，不保留占位符，其元素定位是相对于其父级以上，一直追溯至设置了position：relative或fixed属性的外层元素（也包含块元素），如果其外层元<br>素均匀未设置position属性，则定位是相对于HTML文档进行的绝对定位，并不是相对于body的定位<br><br>缺点：脱离文档流，会导致后续元素全部脱离文档流，可用行差。<br><br>优点： 就是 让元素拥有了 inline-block 宽高限制<br><br><span style="color:#F67F30">流式布局（streaming）</span><br>元素的宽高用百分比做单位，元素宽高按屏幕分辨率调整，布局不发生变化。屏幕尺度跨度过大的情况下不能正常显示<br><br>使用百分比定义宽高大多数都是用px来固定住，可以根据可视区域（viewport）和父元素的尺寸进行调整，尽可能的适应各种分辨率，往往max-width/min-width等属性控制尺寸<br>流动范围以免过大或者过小影响阅读页面。这种布局方式在WEB前端开发的时早期历史上，用来应对不同尺寸的pc屏幕（那时屏幕尺寸的差异不会太大），在当今的移动端开发<br>也是常用布局方式，但缺点明显：主要的问题是如果长度过大，那么在相对其原始设计而言过小或过大的屏幕都不能在屏幕上正常的显示。<br><br>因为宽度使用百分比（%）来定义，但是高度和文字大小等大都是用px来固定。所以在大屏幕的手机下显示效果变成有些页面元素宽度被拉的很长，但是高度，文字大小文字还是和<br>原来一样，享受到非常的不协调<br><br>缺点：如果尺度过大或者过小在屏幕上就不能正常显示<br><br>优点：兼容性比较好，当屏幕分辨率变化时元素大小不变布局也不变<br></p>
+<p><span style="color:#F67F30">弹性布局（rem/em）</span><br>弹性布局是css3引入的布局方式，用来代以前的WEB开发人员的一些复杂易错的hacks方法（如float实现流失布局）<br><br>rem是相对于html元素的font-size大小而言的，而em是相对于其父元素，使用rem单位的弹性布局在移动端比较受欢迎使用。<br><br>、这类布局的特点是，包裹文字的各元素的尺寸采用em/rem做单位，而页面的主要划分区域的尺寸仍使用百分数或px做单位（同「流式布局」或「静态/固定布局」）。早期浏览器<br>不支持整个页面按比例缩放，仅支持网页内文字尺寸的放大，这种情况下。使用em/rem做单位，可以使包裹文字的元素随着文字的缩放而缩放。<br><br>rem,em区别：rem,em都是顺应不同网页字体大小展现而产生的。其中，em是相对其父元素，在实际应用中相对而言会带来很多不便；而rem是始终相对于html大小，即页面根元<br>素。<br>浏览器的默认字体高度一般为16px，即1em:16px，但是 1:16 的比例不方便计算，为了使单位em/rem更直观，CSS编写者常常将页面跟节点字体设为62.5%，比如选择用rem控制<br>字体时，先需要设置根节点html的字体大小，因为浏览器默认字体大小16px*62.5%=10px。这样1rem便是10px，方便了计算。<br><br>缺点：浏览器的兼容性比较差只能到ie9以及以上。<br><br>优点：适应性强，在做不同屏幕分辨率的界面时非常使用，可以随意按照宽度，比列划分元素的宽高，实现快捷，易维护。简单，方便，快速。<br></p>
+<p><span style="color:#F67F30">自适应布局（adaptation）</span><br>自适应布局分辨为不一样屏幕分辨率定义布局，可以创建多个静态布局，每一个静态布局对应一个分辨率范围，屏幕分辨率变化时，页面里面的元素的位置会变化而大小不会变，可<br>使用(@media媒体查询)给不同的尺寸和介质的设备切换不同的样式在优秀的响应范围设计下可以给配范围内的设备最好的体验，在同一个设备下实际还是固定的布局<br><br>缺点：如果需要不同页面那么还需要写多页的代码<br><br>优点：屏幕分辨率变化时，页面里面元素的位置变化而大小不会变化<br><br><span style="color:#F67F30">响应式布局（ BootStrap）</span><br>为不同的屏幕分辨率定义布局，同时，在每个布局中，应用流式布局的理念，即页面元素宽度随着窗口调整而自动适配。可以把响应式布局看作是流式布局和自适应布局设计理念的<br>融合。即：创建多个流体式布局，分别对应一个屏幕分辨率范围。响应式几乎已经成为优秀页面布局的标准，每个屏幕分辨率下面会有一个布局样式，即元素位置和大小都会<br>变媒体查询+流式布局。通常使用 @media 媒体查询 和网格系统 (Grid System) 配合相对布局单位进行布局，实际上就是综合响应式、流动等上述技术通过 CSS 给单一网<br>页不同设备返回不同样式的技术统称。<br><br>缺点：媒体查询是有限的，也就是可以枚举出来的，只能 适应主流的宽高，要匹配足够的屏幕大小，工作量比较大，设计也需要多个版本<br><br>优点：适应pc和移动端，如果只够的耐心，效果会很完美。<br><br>以上就是常见的前端布局，不理解的可以多多查询，浏览，理解。<br></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/payment.jpg" alt="Mr.chen WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/20/web%E5%89%8D%E7%AB%AF%E4%B8%89%E5%A4%A7%E4%B8%BB%E6%B5%81%E6%A1%86%E6%9E%B6/" rel="prev" title="web前端三大主流框架">
+      <i class="fa fa-chevron-left"></i> web前端三大主流框架
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/24/%E8%94%AC%E8%8F%9C%E7%9A%84%E7%94%9F%E6%B4%BB%E5%BD%95-2/" rel="next" title="蔬菜的生活录(2)">
+      蔬菜的生活录(2) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.chen"
+      src="/images/%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">Mr.chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/584276169" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;584276169" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a584276169@163.com" title="E-Mail → mailto:a584276169@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/clara.lok.77/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;clara.lok.77&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+<!-- 网易云音乐插件 -->
+
+<iframe style="width:100%!important" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1811921468&auto=1&height=66"></iframe>
+ 
+
+
+
+      </div>
+
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.chen</span>
+</div>
+
+<span id="busuanzi_container_site_uv">  本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+ <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>

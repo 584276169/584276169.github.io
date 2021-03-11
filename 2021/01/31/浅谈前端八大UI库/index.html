@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="浅谈前端八大UI库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈前端八大UI库">
+<meta property="og:url" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/index.html">
+<meta property="og:site_name" content="shucai">
+<meta property="og:description" content="浅谈前端八大UI库">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9301.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9302.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9303.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9304.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9305.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9306.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9307.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9308.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9309.png">
+<meta property="og:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9310.png">
+<meta property="article:published_time" content="2021-01-31T10:45:08.000Z">
+<meta property="article:modified_time" content="2021-01-31T11:03:27.673Z">
+<meta property="article:author" content="Mr.chen">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9301.png">
+
+<link rel="canonical" href="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>浅谈前端八大UI库 | shucai</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+   <!--pjax：防止跳转页面音乐暂停-->
+  <script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script> 
+<link rel="alternate" href="/atom.xml" title="shucai" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">shucai</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-photos">
+
+    <a href="/photos/" rel="section"><i class="fa fa-th fa-fw"></i>photos</a>
+
+  </li>
+        <li class="menu-item menu-item-officialaccount">
+
+    <a href="/officialaccount/" rel="section"><i class="fa fa-th fa-fw"></i>officialaccount</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E5%A4%B4%E5%83%8F.jpg">
+      <meta itemprop="name" content="Mr.chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="shucai">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浅谈前端八大UI库
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-01-31 18:45:08 / Modified: 19:03:27" itemprop="dateCreated datePublished" datetime="2021-01-31T18:45:08+08:00">2021-01-31</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><span style="color:#F67F30">浅谈前端八大UI库</span></p>
+<a id="more"></a>
+<p>下面是本博客所涉及到的八个UI库</p>
+<p>Element UI<br>vuetify<br>Ant Design<br>Bottstrap<br>layui<br>Vant UI<br>Framework7<br>WEUI</p>
+<p>这是我从前端的众多 ui 库中选出来了八个，但是并不是说没有被列出来的 UI 库都不好，没有这个意思，不要把我置身于水深火热之中哈。这里之所以选出这个八个，是因为咱们的一个篇幅关系，不可能把所有的好的前端UI库都拿出来说一遍，所以我就挑出来了我个人感觉八个比较有代表性的 UI 库。那么下面我们一个一个来看。</p>
+<hr>
+
+<p><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9301.png" alt="前端ui库"></p>
+<p><span style="color:#F67F30">Element UI</span><br>开发团队：饿了么前端<br>官网：<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN">https://element.eleme.cn/#/zh-CN</a><br>github（ star：44.1k ）：<a target="_blank" rel="noopener" href="https://github.com/ElemeFE/element">https://github.com/ElemeFE/element</a><br>特性：<br>​ Element-UI 是目前针对于 Vue 开发 PC 端项目的时候所使用到的一个主流 UI 库。在座的有学习 Vue 开发的同学或多或少应该都知道 Element-UI 。那我们就从它开始聊。</p>
+<p>​ 大家有没有想过，对于一个 UI 库来说，它是如何被广大的开发者所接受的？或者说它是如何被用户所接受的？</p>
+<p>​ 我认为，一个产品，具体到当前就是 Element-UI 这个库，这个库对于我们开发者来说就是产品，我们开发者就是它的用户。而一个产品之所以可以被用户所接受，所依赖的无非是三点：</p>
+<ol>
+<li>产品的文档对于用户来说足够清晰</li>
+<li>产品的功能对于用户来说足够简单</li>
+<li>产品的 UI 对于用户来说足够友好</li>
+</ol>
+<p>​ 什么意思呢？我们一个一个来解释。</p>
+<p>​ 首先我们来看第一个：产品的文档对于用户来说足够清晰。这是什么意思呢？大家想一下当我们买了一个东西的时候，最初我们不知道这个东西是怎么用的？那么我们一般都会去看一下它的说明书，或者直接去网上搜索一些这个产品的资料，对吧。那么这个时候如果它的说明书写的不清不楚，甚至有些地方写的根本就不对。那么你如果想要把这个东西使用熟练，是不是要花费特别大的精力。也就是我们开发者常说的，这个框架拥有了过高的学习成本，或者说这个框架学习曲线过于陡峭，不够平滑。那么这样的话无疑会劝退一部分用户。对吧。</p>
+<p>​ 所以说如果一个框架如果想要被开发者广为接受，那么一个清晰的文档肯定是首要的条件。那么对于 Element-UI 来说，它的一个文档就比较清晰。在组件部分，从安装 Element-UI 到各个组件的效果描述的都是非常清楚的，每一步应该如何做，这样做会产生什么样的结果都在文档上描述的很清楚。这个就是一个清晰的产品文档。</p>
+<p>​ 第二条：产品的功能对于用户来说足够简单。这一条也好理解。对于我们开发者来说，当我们使用一个框架的时候，我们想要的是什么？我们想要一个框架：你的功能要足够的复杂，但是你的接口要足够的简单。什么意思呢？大家可以参照一下自己的手机。现在智能手机的功能已经非常复杂了。可以打电话，可以玩游戏，可以看电影。但是一旦你熟悉了它之后，它使用起来确实非常简单的。你不会去关心它的功能是如何实现的，你关心的只是是否可以通过简单的操作来完成复杂的功能。就是这个道理放到我们开发者身上也一样。我不关心你组件封装的如何复杂，我所关心的只是你暴露出来的接口。</p>
+<p>​ 第三条：产品的 UI 对于用户来说足够友好。这一点是什么意思呢？其实这一点主要是对于产品经理和设计师来说的。大家有过开发经验的同学，特别是有过在公司工作过的同学。应该很清楚，你的项目最终开发出来帐什么样子，不是你决定的。是产品经理和设计师来决定的。那设计项目的 UI 他们的依据是什么呢？他们会依据产品的特性、产品的定位等等，但是绝大部分的 UI 依据都是目前用户的一个普遍审美。</p>
+<p>​ 大家有没有发现对于现在的 APP 、网页甚至手机来说，他们的 UI 同质化非常严重吗？差不多都是一个风格的，对吧。出现这个问题的原因就是因为大众的一个审美会定位到同一块区间，而设计根据大众的审美来定位产品的样式，所以才会出现这种同质化的问题。</p>
+<p>​ 那么这个和我们开发者有什么关系呢？大家想一下，如果一个 UI 库它能够符合大众的普遍审美，并且提供了一种良好的交互体验，那么如果你是设计师的话，你会不会参照或者直接使用 UI 库所提供的样式。因为对于这种 UI 库来说，它的样式会比大部分的设计做出来的样式还要好。</p>
+<p>​ 那么对于我们开发者来说，当你拿到设计稿的时候，你发现设计稿上的样式和 Element-UI 一样，你是不是到 Element-UI 上直接拿过来用就可以了呀。</p>
+<p>​ 并且对于 Element-UI 它额外还提供了 自定义主题 和 国际化的功能。这些具体怎么做，文档说的很详细，我们就不展开说了。</p>
+<p>​ 那么总结一下 Element-UI 。</p>
+<ol>
+<li>Element-UI 是现在基于 Vue 的一个非常好用的桌面端 UI 组件库</li>
+<li>支持 @vue/cli 项目的直接添加，支持按需导入、国际化、支持自定义主题</li>
+<li>文档清晰，学习成本低</li>
+<li>提供的组件足够使用</li>
+<li>UI 的风格符合目前大众的普遍审美</li>
+<li>如果你想要做一个公司级别的产品，那么 Element-UI 基本可以满足需求，但是难免样式、风格上会同质化严重</li>
+</ol>
+<hr>
+
+<p>但是如果你想要弄一个自己的网站、自己的项目，并且希望在样式上，不喜欢那么同质化，应该怎么呢？这个时候，你可以参考下，另外一个 UI 库，就是 vuetify。<br><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9302.png" alt="前端ui库"><br><span style="color:#F67F30">vuetify</span><br>开发团队：麻省理工学院开源项目<br>官网：<a target="_blank" rel="noopener" href="https://vuetifyjs.com/zh-Hans/">https://vuetifyjs.com/zh-Hans/</a><br>github（ star：24.1k ）：<a target="_blank" rel="noopener" href="https://github.com/vuetifyjs/vuetify">https://github.com/vuetifyjs/vuetify</a><br>特性：<br>​ vuetify 是麻省理工学院的开源项目，文档同样支持全球化，它是基于 Android Material Design 风格的一个 vue 前端组件库。同样支持 @vue/cli 项目的直接添加。</p>
+<p>​ 不过 vuetify 的 Material Design 风格在国内并不是很大众， Material Design 是由Google开发的设计语言，第一次公开使用应该是在 Android 5.0 上面，但是在国内这种样式风格一直推行的效果不好。在国外这种风格被接受的程度还可以，但是国内你会发现很少见。</p>
+<p>​ 这样就导致这种设计风格不会存在大量同质化的问题。同样的如果你使用了这种风格的话，也必须要承担一定的风险。所以对于公司级项目来说，如果使用了 vuefity 的话，那么无形中就会为产品增加一些风险。不过如果你是要做一个自己的项目，并且希望你的项目拥有一些自己的个性，那么 vuetify 无疑是一个很好的选择。</p>
+<p>​ 对于 vuetify 本身的一个功能层面上，它的文档、它的组件都可以完全满足我们的一个日常使用，比如，在它的 UI 组件里面，我们常用到的这些组件都是比较全的。</p>
+<p>​ 另外它还提供了一些扩展的指令，这些指令是在 vue 的基础上做的一些扩展，可以满足一些特定的需求。</p>
+<p>​ 总的来说，vuetify 上手的难度会比 elementUI 要高一些，主要是因为国外的人的思维和国内的人还是有一些不同，所以这就导致了 vuetify 对于国内来说会难免有一些水土不服，而产生两个极端，也就是所谓的：喜欢他它的人很喜欢，讨厌它的人很讨厌。</p>
+<p>​ 总结一下 vuetify：</p>
+<ol>
+<li>vuetify 是国外团队进行开发的一个基于 vue 的组件库</li>
+<li>支持 @vue/cli 项目的直接添加，支持按需导入、国际化、提供了定制功能（样式、颜色、主题等等）</li>
+<li>文档相对清晰，但是和国人的思维不太一样，导致学习成本相对高一些</li>
+<li>提供的组件足够使用，并且提供了 v- 开头的扩展指令，还有付费专题模块</li>
+<li>UI 的风格使用的是 Google 推出的 Material Design 的设计风格，在国内推广度相对低一些</li>
+<li>使用 vuetify 在 UI 样式上，会有一些额外的风险，但是可以避免同质化的问题，比较适合一些个人或者需要彰显个性的项目</li>
+</ol>
+<hr>
+
+<p>介绍了两个都是基于 vue 的 UI 库。那么下面我们来看一下基于(常用于) React 的 UI 库。<br><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9303.png" alt="前端ui库"></p>
+<p><span style="color:#F67F30">Ant Design</span><br>开发团队：蚂蚁金服体验技术部<br>官网：<a target="_blank" rel="noopener" href="https://ant.design/index-cn">https://ant.design/index-cn</a><br>github（ star：57.6k ）：<a target="_blank" rel="noopener" href="https://github.com/ant-design/ant-design/">https://github.com/ant-design/ant-design/</a><br>特性：<br>Ant Design 被官方定义为一种设计体系，不过设计体系这种高雅的东西，对咱们这些俗人应该认知不大，我们所认知最明确的，就是这个东西能为我们的开发带来什么帮助。所以我们下面就把它当作一个 UI 库来看。</p>
+<p>Ant Design 在 react 中的地位，应该和 element UI 在 vue 中的地位是一样的，都可以说是最火爆的 UI 库之一。</p>
+<p>Ant Design 同时支持 React、Vue、Angular，也就是说我们在这三个主流框架中都可以使用，但是 Ant Design 对于React 的支持是最好的，所以一般我们说到 Ant Design ，都会说他是一个基于 React UI 的一个组件库。</p>
+<p>​ Ant Design 是阿里巴巴-蚂蚁金服体验技术部所设计的一个 UI 库，目前最新的是 4.x 的版本，我们看它的主页，就能够感觉出来，一个整体的设计风格是非常赞的。</p>
+<p>​ 同样，像国际化、定制主题的这些功能，Ant Design 也同样是支持的，这个没得说，具体怎么做，大家看文档。</p>
+<p>​ Ant Design 的文档也非常的详细，无论到快速上手，到各个组件的使用，都有非常详细的文档。</p>
+<p>​ 另外非常值得一提的就是关于 Ant Design 的社区，它的社区中提供了非常多的精品组件和一些开发中常用的一些工具推荐，这一点是 ElementUI 上所没有的，可以说它的社区是真的很用心的在做的。</p>
+<p>​ 对于 Ant Design 来说，如果把它作为 React 项目的一个核心 UI 库的话，那么它是完全可以胜任的，没有一点问题。并且无论是它的开发团队也好，它的一个社区也好，都可以很好的保证该库的一个正常的升级和迭代。</p>
+<p>​ 总结一下 Ant Design：</p>
+<ol>
+<li>Ant Design 是阿里巴巴-蚂蚁金服体验技术部所设计的一个 UI 库，一般用于基于 React 的项目</li>
+<li>支持在 create-react-app（React 官方脚手架） 项目的直接添加，支持按需导入、国际化、提供了定制主题</li>
+<li>文档清晰，学习成本低</li>
+<li>提供的组件足够使用，并且提供了精品社区服务</li>
+<li>UI 的风格符合目前大众的普遍审美</li>
+<li>如果你想要做一个公司级别的产品，那么 Ant Design 基本可以满足需求，但是难免样式、风格上会同质化严重</li>
+</ol>
+<hr>
+上面说的都是一些对于现阶段，也就是 web 3.0 阶段的 UI 库，然后我们来看两个适用于 web 2.0 阶段的 UI 库。
+
+<p><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9304.png" alt="前端ui库"></p>
+<p><span style="color:#F67F30">Bootstrap</span><br>开发团队：Twitter<br>官网：<a target="_blank" rel="noopener" href="https://www.bootcss.com/">https://www.bootcss.com/</a><br>github（ star：139k ）：<a target="_blank" rel="noopener" href="https://getbootstrap.com/">https://getbootstrap.com/</a><br>特性：<br>​ Bootstrap 前端的同学应该没有不知道。在之前的 web 2.0 阶段，可以说是大名鼎鼎了。我们这里提到了 web 3.0 和 web 2.0 ，那么给大家解释一下。</p>
+<p>​ 整个前端开发的历史，我把它分成了三个阶段，web 1.0 、web 2.0 和 web 3.0。</p>
+<p>​ 对于 web 1.0 来说， 指的就是 html、css、js的那个阶段，整个前端的交互还都是以一种原生的方式进行展示，这个时候还没有前端工程师的概念，或者说这个概念很稀薄，大部分的前端工作都是由后端的工程师来兼职进行开发的。</p>
+<p>​ 而 web 2.0 阶段，最大的标志就是 jQuery、bootstrap、还有各种模板引擎的库开始出现，这个时候开始逐渐有了前端开发工程师的岗位，但是前端依然不够兴盛，因为虽然这些新出现的东西使前端的开发有了一些壁垒，但是这种壁垒明显不够坚固，并且这些库并没有带来太大的本质上的变化，更多的是一种增强。</p>
+<p>​ 而 web 3.0 阶段，最大的标志就是 angular、react、vue 的出现。从最初 google 推出了 angular 1， angular 1 一出现，确实可以说是惊艳。他把之前零零碎碎的内容，比如数据驱动，比如模板语法，比如模块化的东西进行了整合，变成了一个大一统的框架。但是因为 angular 1 属于一个最初的尝试，所以在设计上还有很多不完善的地方，这就导致了 angular 2的变化过大，成了一个断层，就引起了很多人的不满。</p>
+<p>​ 而这个时候 react、vue 也开始逐渐崛起，从 angular 手中抢走了大量的开发者。而 react、vue 所推崇的这种渐进式框架的方案，明显更被开发者所接受，所以就导致现在 react 和 vue 的开发者基数要远远的大于 angular了。不过就算是这样，没有人可以否认 angular 所带来的贡献。</p>
+<p>​ angular、react、vue 完全提高了前端的壁垒，随之也逐渐出现了很多的周边库，比如 前端路由库、全局状态管理工具、webpack 这种大一统的前端打包工具。</p>
+<p>​ 这些内容的出现，就导致了前端的学习成本变得越来越高，也就使得前端的壁垒变得越来越坚固。</p>
+<p>​ 再加上用户对于体验的要求越来越高，后端工程师对此逐渐开始无力，这就导致前端工程师开始出现，前后端的项目分离变成了现在的正统，大家各司其事，后端的工程师主要做后端的内容，前端工程师主要做前端的内容。</p>
+<p>​ 这就是整个前端的一个大概的发展历史，而对于 bootstrap 来说，他在 web 2.0 的时候，是顶顶大名的。使用它来开发的项目不计其数啊，主要原因就是因为它足够简单、易用，并且它的一个设计风格在当时相当超前的。</p>
+<p>​ 不过在现在的阶段，bootstrap 已经开始被使用的越来越少了，哪怕是推出了 bootstrap vue 这种拥抱现阶段的库，也只能说是表现平平。</p>
+<p>​ 但是对于 bootstrao 来说，它就完全没有价值了吗？不是的。如果你的项目需要兼容到 IE8，那么你就没有办法使用之前咱们提到的那些 UI 库，这个时候， bootstrap 这种纯 css 的库，会给你带来很大的帮助。关于 bootstrap，大家应该都会比较熟悉了，我们就不详细说了。</p>
+<p>​ 总结一下 bootstrap：</p>
+<ol>
+<li>Bootstrap 是 Twitter 所设计的一个 UI 库，以 css 样式为主，也提供了一些组件的功能需要配合 js 来进行使用</li>
+<li>使用简单，文档清晰，学习成本低</li>
+<li>提供的组件相对较少</li>
+<li>可以只使用框架中的 css 样式，可嵌入性较高</li>
+<li>UI 的风格符合目前大众的普遍审美</li>
+<li>适合使用在对游览器兼容性有要求的项目中<hr>
+除了 bootstrap 之外，另外一个 web 2.0 阶段的 UI 库就是 layui 。
+
+</li>
+</ol>
+<p><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9305.png" alt="前端ui库"></p>
+<p><span style="color:#F67F30">layui</span><br>开发团队：自由职业者（贤心）<br>官网：<a target="_blank" rel="noopener" href="https://www.layui.com/">https://www.layui.com/</a><br>github（ star：21.1k ）：<a target="_blank" rel="noopener" href="https://github.com/sentsin/layui/">https://github.com/sentsin/layui/</a><br>特性：<br>​ layui 是自由职业者（贤心）进行开发的一个前端库，最低可以兼容到 IE8 ，官网介绍它是一个更加适合服务端工程师来开发前端页面的库，但是对于前端工程师来说，如果你的项目要兼容到 IE8 的话，那么使用 layui 也是一个很好的选择。</p>
+<p>​ layui 的主要内容被分成了两个大的部分，1.页面元素。 2.内置模块</p>
+<p>​ 对于页面元素来说，主要就是一些 css 的样式，也就是一些定义好的 css 样式类，这一点和 bootstrap 很像。</p>
+<p>​ 对于内置模块来说，是 layui 比较推崇的一个概念。比如按需引入的模块化。当然这个概念对于现在的前端开发来说，已经变成了一个普遍的功能点了。比如我们前面说到的 Element-UI、vuetify、And Design 都拥有这个功能。 但是在 web 2.0 阶段的时候，这个模块化的功能还是比较先进的。</p>
+<p>​ 至于 layui 中所涉及到的样式部分，按照现在的一个审美来说依然是不过时的，所以说对于现在来说，如果你对前端的技术了解的并不深，或者说你是一个服务端工程师，那么想要开发一个前端页面的话，layui 依然是一个比较好的选择。</p>
+<p>​ 总结下 layui：</p>
+<ol>
+<li>layui 是 自由职业者（贤心）进行开发的一个前端库，最低可以兼容到 IE8</li>
+<li>设置的初衷是让非前端的工程师可以很方便的开发前端页面</li>
+<li>使用简单，文档清晰，学习成本低</li>
+<li>提供页面元素和模块化的概念</li>
+<li>UI 的风格并不过时</li>
+<li>适合非专业前端工程师使用</li>
+</ol>
+<hr>
+
+<p>之前看了很多桌面端的组件库了，那么下面我们来看几个移动端的 UI 组件库。</p>
+<p><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9306.png" alt="前端ui库"></p>
+<p><span style="color:#F67F30">Vant-UI</span><br>开发团队：有赞前端团队<br>官网：<a target="_blank" rel="noopener" href="https://youzan.github.io/vant/#/zh-CN/">https://youzan.github.io/vant/#/zh-CN/</a><br>github（ star：12.9k ）：<a target="_blank" rel="noopener" href="https://github.com/youzan/vant">https://github.com/youzan/vant</a><br>特性：<br>​ Vant-UI 是有赞前端团队开发的一个基于 vue 的移动端组件库。不过对于移动端组件库来说，它和桌面端有非常多的不同。</p>
+<p>​ 比如说，官方的文档，对于移动端的组件库文档来说，大部分都会把整个项目中所有的组件通过一个类似于手机的UI形式给一次性全部罗列出来。</p>
+<p>这个在 PC 端的 UI 库中，大家应该很少见吧。我个人是比较喜欢这种方式的，因为这样它可以让开发者很方便的知道，这个 UI 库它的各个组件的样式效果，是否可以满足个人的需求。</p>
+<p>​ 还有关于兼容性方面，因为是移动端的组件库，那么它都会运行在手机上，而对于手机来说就不会存在 PC 端浏览器 IE 兼容性的问题了。更多的是关于手机系统版本的问题。咱们就以 Vant-UI 为例，他在浏览器支持这方便介绍说，现代浏览器以及 Android 4.0，IOS 8.0 以上的系统都支持，那么以咱们现在的这个时间点来说，基本上就不会存在兼容性的问题了。</p>
+<p>​ 还有就是组件的样式风格上，因为对于移动端设备来说，毕竟大小、尺寸、操作方式都不一样，所以在 UI 的一个整体设计风格上，肯定和 PC 端上有很大的不同。</p>
+<p>​ 然后还有最重要的一点，也是考验移动端组件库的一个非常重要的难点。就是流畅性的问题。这个问题在桌面端组件库上一般不会是一个太大的难点。但是在移动端上面就不太一样了。手机使用的流畅度的问题，在咱们现在依然还是一个大家都非常关注的点，并且对于现在的用户来说，对于移动端流畅度的要求，要更加苛刻，这种苛刻的程度远高于 PC 端。所以说如果你开发了一个 web app 或者 web 端网页的话，如果很卡，那么无论你的 UI 样式做的再好，估计也会大大减分的。</p>
+<p>​ 所以说对于一个移动端的 UI 库来说，它如果要做好其实要比 PC 端的组件库难度更大上一些。而 Vant-UI 在基于 Vue 的移动端组件库中，各方面都是非常不错的。无论是文档、组件的丰富性、易用性上，我个人都比较喜欢。<br><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9307.png" alt="前端ui库"><br>大家打开 Vant-UI的官网，在业务组件部分，它提供了一些目前商城类系统所常用到的业务模块。比如商品规格，像这种拥有相对固式样式的业务，它提供了成套的业务组件，并且这些业务组件，我们也可以使用 Vue 中的 插槽 功能去进行一些定制这个我觉得是非常非常好的一个功能。</p>
+<p>​ 总结一下 Vant-UI：</p>
+<ol>
+<li>Vant-UI 是有赞前端团队所设计的一个 UI 库，一般用于基于 Vue 的移动端项目</li>
+<li>支持 @vue/cli 项目的直接添加，支持按需导入、国际化、提供了定制功能（样式、颜色、主题等等）</li>
+<li>文档清晰，学习成本低</li>
+<li>提供的组件足够使用，性能不错，并且提供了基于商城业务的成套组件</li>
+<li>UI 的风格以及交互操作可以达到现在的主流标准</li>
+<li>适用于 web app 或者 基于移动端的网页开发</li>
+</ol>
+<hr>
+
+<p>然后我们来看另外一个移动端组件库</p>
+<p><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9308.png" alt="前端ui库"><br><span style="color:#F67F30">Framework7</span><br>开发团队：独立开发者（github名：Vladimir Kharlampidi）<br>官网：<a target="_blank" rel="noopener" href="http://www.framework7.cn/">http://www.framework7.cn/</a><br>github（ star：15.3k ）：<a target="_blank" rel="noopener" href="https://github.com/framework7io/framework7/">https://github.com/framework7io/framework7/</a><br>特性：<br>​ Framework7 是独立开发者开源的一个全功能框架。可以用来构建 IOS、Android和桌面应用程序。注意我们这里说的是框架，不再是一个简单的 UI 组件库了。</p>
+<p>​ 由组件库变成了框架，那么显然带来的问题就是复杂度直线上升了。但是复杂度上升的同时，它能够给我们带来的东西也完全不一样了。打开官网，我们一起来看一下。</p>
+<p>​ 打开官网，首先我们能看到它的一个功能演示。我们主要看 IOS 和 android 这两个部分。</p>
+<p><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9309.png" alt="前端ui库"></p>
+<p> Framework7 针对 IOS 和 Android 的不同风格提供了不同的展示样式。对于 IOS 是标准的苹果风。对于 Android 则提供了基于 Material Design 的一种设计风格。并且 Framework7 提供了一种很牛的功能，这个功能是其他的 UI 组件库所没有的，那就是基于移动端不同页面的一个过场动画。</p>
+<p>​ 对于 Framework7 因为它是一个框架，所以说它不需要再依赖于向 vue、react 这种其他的框架，它本身就可以完整的去开发一个项目。同时如果你想要基于 vue 或者 react 来配合 Fragment7 使用的话，那么也是可以的。Fragment7 同时也提供了 Framework7 Vue 和 Framework7 React 这两个框架。</p>
+<p>​ 另外对于 Framework7 提供了很多新的概念，比如 Framework7 CLI 、DOM 7 等等，咱们再这里就不在详细说了。</p>
+<p>​ 总结一下 Framework7 ：</p>
+<ol>
+<li>Framework7 是独立开发者所设计的一个全功能框架。可以用来构建 IOS、Android和桌面应用程序。</li>
+<li>本身是一个独立的框架，同时也可以配合 vue 和 react 来使用。整体比较重</li>
+<li>文档汉化不是很好，具有一定的学习成本。</li>
+<li>提供的功能组件、交互视图足够强大，并且也有很多新的概念，性能优秀。</li>
+<li>UI 的风格以及交互操作可以达到原生 APP 95%的体验</li>
+<li>适用于没有资深前端开发工程师的公司使用。</li>
+</ol>
+<hr>
+
+<p>最后我们来看一个由 微信团队开发的 weui</p>
+<p><img src="/2021/01/31/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7UI%E5%BA%93/%E5%89%8D%E7%AB%AF%E5%85%AB%E5%A4%A7ui%E5%BA%9310.png" alt="前端ui库"></p>
+<p><span style="color:#F67F30">WEUI</span><br>开发团队：微信官方团队<br>官网：<a target="_blank" rel="noopener" href="https://weui.io/">https://weui.io/</a><br>github（ star：24.2k ）：<a target="_blank" rel="noopener" href="https://github.com/Tencent/weui">https://github.com/Tencent/weui</a><br>特性：<br>​ weui 是微信官方团队开发的一套同微信原生视觉体验一致的基础样式库。提供了一些组件和样式的简单使用。主要应用于微信内部网页和微信小程序。</p>
+<p>​ 对于 weui 的文档没有放到官网上，而是在 guthub 中。这个大家注意下，别找不到文档就可以。不过微信的文档是相对比较乱的，并且有一些示例代码的地址已经打不开了（2020-03 时测试）。这就导致大家如果想要学习 weui 的使用，那么只能从 github 上下载一下实例代码来学习了。</p>
+<p>​ weui 的话我们不做过多介绍，简单总结下：</p>
+<ol>
+<li>weui 是微信官方团队开发的一套同微信原生视觉体验一致的基础样式库。</li>
+<li>因为只应对微信内部网页和微信小程序，所以所提供的功能相对简单。</li>
+<li>文档稍微乱一些。</li>
+<li>提供的功能组件有限，主要还是应对场景的问题。</li>
+<li>UI 的风格同微信原生视觉体验一致</li>
+<li>适用微信内部网页和微信小程序。</li>
+</ol>
+<hr>
+合理的运用 UI库 ， 可以大大的提升我们的开发效率，并且保证我们的项目设计维持在一个平均水平之上。
+
+<p>但是合理的使用，并不代表着完全依赖，UI 库 可以帮助我们解决设计上 80% 的问题，但是 UI 库也会给我们带来一些限制，比如风格上和设计上。</p>
+<p>所以我们大家需要合理的看待 UI 库的存在。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/payment.jpg" alt="Mr.chen WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/28/HTML%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9A%E4%BD%8D%E6%96%B9%E5%BC%8F/" rel="prev" title="HTML中的几种定位方式">
+      <i class="fa fa-chevron-left"></i> HTML中的几种定位方式
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/02/02/%E8%94%AC%E8%8F%9C%E7%94%9F%E6%B4%BB%E5%BD%95-3/" rel="next" title="蔬菜生活录(3)">
+      蔬菜生活录(3) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Mr.chen"
+      src="/images/%E5%A4%B4%E5%83%8F.jpg">
+  <p class="site-author-name" itemprop="name">Mr.chen</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/584276169" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;584276169" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:a584276169@163.com" title="E-Mail → mailto:a584276169@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.instagram.com/clara.lok.77/" title="Instagram → https:&#x2F;&#x2F;www.instagram.com&#x2F;clara.lok.77&#x2F;" rel="noopener" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+  </div>
+
+
+
+<!-- 网易云音乐插件 -->
+
+<iframe style="width:100%!important" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1811921468&auto=1&height=66"></iframe>
+ 
+
+
+
+      </div>
+
+
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mr.chen</span>
+</div>
+
+<span id="busuanzi_container_site_uv">  本站访客数<span id="busuanzi_value_site_uv"></span>人次</span>
+ <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+    </div>
+</body>
+</html>
